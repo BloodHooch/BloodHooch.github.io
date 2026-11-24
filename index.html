@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кровь и самогон | PVE — DayZ сервер</title>
+<meta name="description" content="DayZ PvE сервер «Кровь и самогон». IP: 109.248.4.178:2314">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0f0e; --panel:#151a17; --line:#2b3029;
+  --text:#e6dcc6; --muted:#a39a85;
+  --blood:#b3261e; --amber:#e0a030;
+  --head:"Russo One","Arial Black",Impact,sans-serif;
+  --body:"PT Sans",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:18px/1.6 var(--body)}
+a{color:var(--amber)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+nav{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(11,15,14,.95);z-index:5}
+nav .wrap{display:flex;gap:22px;align-items:center;overflow-x:auto;padding-top:8px;padding-bottom:8px;white-space:nowrap}
+nav img{width:36px;height:36px;border-radius:4px;flex:none}
+nav a{color:var(--muted);text-decoration:none;font-weight:700}
+nav a:hover{color:var(--amber)}
+header.hero{
+  background:
+    linear-gradient(
+      rgba(5,8,7,.65),
+      rgba(5,8,7,.85)
+    ),
+    url("images/dayz-bg.jpg") center center / cover no-repeat;
+
+  border-bottom:6px solid var(--blood);
+  padding:60px 0 80px;
+  text-align:center;
+}
+.hero img{display:block;width:min(100%,520px);height:auto;margin:0 auto 8px}
+.lead{max-width:32em;margin:0 auto 28px;color:var(--muted);font-size:1.15em}
+.ip{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.ip code{background:var(--panel);border:2px solid var(--amber);padding:12px 20px;font:400 1.3em var(--head);user-select:all}
+button,.btn{font:700 1em var(--body);background:var(--blood);color:#fff;border:0;padding:12px 22px;cursor:pointer;text-decoration:none;display:inline-block}
+button:hover,.btn:hover{background:#cf3128}
+.btn.alt{background:transparent;border:2px solid var(--line);color:var(--text)}
+.btn.alt:hover{border-color:var(--amber);color:var(--amber)}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+h2{font:400 2em var(--head);margin:0 0 24px}
+h2::after{content:"";display:block;width:56px;height:4px;background:var(--blood);margin-top:10px}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.feat div{background:var(--panel);border-top:4px solid var(--blood);padding:18px}
+.feat h3{font:400 1.2em var(--head);margin:0 0 8px;color:var(--amber)}
+.feat p{margin:0;color:var(--muted);font-size:.95em}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.steps li{counter-increment:s;background:var(--panel);padding:16px 18px 16px 64px;position:relative;border-left:4px solid var(--amber)}
+.steps li::before{content:counter(s);position:absolute;left:18px;top:12px;font:400 1.6em var(--head);color:var(--amber)}
+.mods{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.mods li{background:var(--panel);padding:12px 16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.news{display:grid;gap:14px}
+.news article{background:var(--panel);padding:16px 18px;border-left:4px solid var(--blood)}
+.news time{color:var(--amber);font-weight:700}
+.news p{margin:4px 0 0}
+.note{color:var(--muted);font-size:.95em;margin-top:16px}
+.rules{padding-left:22px}
+.rules li{margin-bottom:10px}
+.rules li::marker{color:var(--blood);font-weight:700}
+.cards2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.cards2>div{background:var(--panel);padding:20px;border-top:4px solid var(--amber)}
+.cards2 h3{font:400 1.2em var(--head);margin:0 0 8px}
+.cards2 p{margin:0 0 16px;color:var(--muted);font-size:.95em}
+.goal{background:var(--panel);padding:20px;border-left:4px solid var(--blood);margin-bottom:20px}
+.bar{height:14px;background:#0b0f0e;border:1px solid var(--line);margin:10px 0 6px}
+.bar i{display:block;height:100%;background:var(--amber)}
+.goal small{color:var(--muted)}
+.rg{margin-bottom:32px}
+.rg h3{font:400 1.3em var(--head);color:var(--amber);margin:0 0 12px}
+.rg ol{padding-left:26px;margin:0}
+.rg li{margin-bottom:10px}
+.rg li::marker{color:var(--blood);font-weight:700}
+.warn{background:var(--panel);border-left:4px solid var(--blood);padding:12px 16px;margin:0 0 14px}
+.links{display:flex;flex-wrap:wrap;gap:12px}
+footer{padding:32px 0;color:var(--muted);font-size:.9em}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <img src="favicon.png" alt="">
+  <a href="#about">О сервере</a>
+  <a href="#connect">Как зайти</a>
+  <a href="#mods">Моды</a>
+  <a href="#news">Новости</a>
+  <a href="#rules">Правила</a>
+  <a href="#donate">Поддержать</a>
+  <a href="#contacts">Контакты</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <img src="logo.jpg" alt="Кровь и самогон | PVE" width="720" height="720">
+  <!-- TODO: замените описание на своё -->
+  <p class="lead">Выживание без игроков-убийц: враг здесь только мир вокруг. Собирайте лут, стройте базу, гоните самогон и играйте спокойно.</p>
+  <div class="ip">
+    <code id="ip">109.248.4.178:2314</code>
+    <button id="copy" type="button">Скопировать адрес</button>
+    <a class="btn alt" href="#connect">Как подключиться</a>
+  </div>
+</div></header>
+
+<section id="about"><div class="wrap">
+  <h2>О сервере</h2>
+  <!-- TODO: впишите реальные особенности сервера -->
+  <div class="feat">
+    <div><h3>Полный PvE</h3><p>Игроки не воюют друг с другом. Опасность идёт от заражённых и окружения.</p></div>
+    <div><h3>Самогон</h3><p>Варите, торгуйте и обменивайте. Здесь это настоящая валюта.</p></div>
+    <div><h3>Свои базы</h3><p>Стройте и укрепляйте убежище, не боясь рейдов от других игроков.</p></div>
+    <div><h3>Живое сообщество</h3><p>Администрация на связи в Discord, события и вайпы анонсируются заранее.</p></div>
+  </div>
+</div></section>
+
+<section id="connect"><div class="wrap">
+  <h2>Как подключиться</h2>
+  <ol class="steps">
+    <li>Установите DayZ в Steam и все моды сервера из раздела ниже (нажмите «Подписаться» на каждом).</li>
+    <li>Запустите DayZ Launcher и откройте вкладку <b>Прямое подключение</b>.</li>
+    <li>Введите Ip <b>109.248.4.178</b> Port <b>2314</b>. Либо найдите сервер по названию «Кровь и самогон».</li>
+    <li>Дождитесь загрузки модов и нажмите <b>Play</b>.</li>
+  </ol>
+  <p class="note">Если лаунчер пишет, что не хватает модов, проверьте, что все они подписаны и обновлены.</p>
+</div></section>
+
+<section id="mods"><div class="wrap">
+  <h2>Моды сервера</h2>
+  <!-- TODO: замените примеры на свои моды и ссылки Steam Workshop -->
+  <ul class="mods">
+    <li><span>Название мода 1</span><a href="https://steamcommunity.com/app/221100/workshop/" target="_blank" rel="noopener">Steam Workshop</a></li>
+    <li><span>Название мода 2</span><a href="https://steamcommunity.com/app/221100/workshop/" target="_blank" rel="noopener">Steam Workshop</a></li>
+    <li><span>Название мода 3</span><a href="https://steamcommunity.com/app/221100/workshop/" target="_blank" rel="noopener">Steam Workshop</a></li>
+  </ul>
+</div></section>
+
+<section id="news"><div class="wrap">
+  <h2>Новости</h2>
+  <!-- TODO: добавляйте новые записи сверху, копируя блок <article> -->
+  <div class="news">
+    <article><time>23.11.2026</time><p>Полный вайп сервера 27.12.26.</p></article>
+  </div>
+</div></section>
+
+<section id="rules"><div class="wrap">
+  <h2>Правила</h2>
+  <div class="rg"><h3>Основные правила</h3><ol><li>Сервер полностью PVE (игрок против окружения), следовательно, убийство, рейд базы, воровство в любом виде — автоматически перманентный бан.</li><li>Правила общения: запрещены оскорбления, политический и религиозный срач, разжигание ненависти по национальным или расовым признакам, неадекватное количество флуда в глобальном чате.</li><li>Прошу минимизировать мусор: части животных можно не собирать, а что-то лишнее лучше закинуть в труп зомби или костёр.</li><li>Запрещено нытьё и деструктивная критика (сервер делался для себя, собственными силами и средствами; если меня всё устраивает, значит, всё правильно).</li><li>Запрещена реклама в любом виде.</li><li>Запрещено использовать для своей выгоды мои ошибки или ошибки игры, следует сразу сообщать о их наличии.</li><li>Запрещены никнеймы (как в игре, так и в Discord), содержащие нецензурную брань или провокационный характер, а также спецсимволы, усложняющие работу мода на чат.</li></ol></div>
+  <div class="rg"><h3>Правила стройки</h3><ol><li>Запрещена застройка объектов интереса (полицейские участки, замки, лесопилки, больницы).</li><li>Стройка рядом с другой базой только при согласии того, чья база была зарегистрирована ранее.</li><li>Запрещена стройка ближе 1000 метров от крупных военных баз (СЗ, Тисы, Рифы, Павлово, Зеленогорск, Троицкое), исключение: «Глубокое Озеро» и трейдер. От остальных баз — 500 метров (расстояние считается от внешнего забора).</li><li>На каждой базе обязательна мусорка (в трейдере за копейки).</li><li>На одного человека должна приходиться только одна база.</li><li>Каждая база подлежит регистрации (форма: координаты, ники проживающих, скриншот карты). Пожалуйста, одним сообщением.</li><li>Запрещено строить базу с максимальной площадью, превышающей 30 фундаментов (с учётом забора).</li><li>Высота любой базы не должна превышать 3 этажей.</li></ol></div>
+  <div class="rg"><h3>Правила транспорта</h3><ol><li>На базах не должно быть более одного автомобиля на зарегистрированного проживающего.</li><li>На всех заправках находятся паркоматы: автомобили должны храниться либо в виртуальном гараже, либо на базе.</li><li>Запрещено заезжать на автомобилях на острова и военные базы.</li><li>После угона автомобиля с данжей в обязательном порядке ставим его хотя бы на минуту в виртуальный гараж, иначе новый не появится.</li></ol></div>
+  <div class="rg"><h3>Правила доната</h3><p class="warn">Все покупки являются добровольным пожертвованием на развитие сервера (приобретение модов, оплата аренды).</p><ol><li>Предмет приобретается на промежуток времени между вайпами (раз в квартал); перенос на следующий сезон, если таковой будет, за полцены. Предметы, купленные за 30 дней до вайпа, выдаются безвозмездно.</li><li>Никаких страховок; восстановления безлимитные (только для предметов, купленных именно в донате и с припиской «страховка»).</li><li>Разрешено донатные вещи передавать и продавать за игровую валюту, запрещено продавать за реальные деньги.</li><li>Все вещи из магазина выдаются на 3-й день после вайпа, стартуют все на равных.</li></ol></div>
+</div></section>
+
+<section id="donate"><div class="wrap">
+  <h2>Поддержать сервер</h2>
+  <p> Порядок покупок и сроки выдачи описаны в «Правилах доната» выше. Чтобы поддержать сервер или задать вопрос, напишите администрации в Discord.</p>
+  <div class="links"><a class="btn" href="https://discord.gg/wsn7mutcgS" target="_blank" rel="noopener">Написать в Discord</a></div>
+</div></section>
+
+<section id="contacts"><div class="wrap">
+  <h2>Контакты</h2>
+  <!-- TODO: вставьте свои ссылки вместо # -->
+  <div class="links"><a class="btn" href="https://discord.gg/wsn7mutcgS" target="_blank" rel="noopener">Discord сервера</a></div>
+</div></section>
+
+<footer><div class="wrap">© Кровь и самогон | PVE. Сайт не связан с Bohemia Interactive.</div></footer>
+
+<script>
+document.getElementById('copy').addEventListener('click',function(){
+  var b=this, t=document.getElementById('ip').textContent;
+  function ok(){b.textContent='Скопировано';setTimeout(function(){b.textContent='Скопировать адрес'},1800)}
+  if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,function(){})}
+  else{var r=document.createRange();r.selectNodeContents(document.getElementById('ip'));var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');ok()}catch(e){}}
+});
+</script>
+</body>
+</html>
